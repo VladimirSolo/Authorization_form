@@ -1,3 +1,14 @@
-.App {
+
+.wrapper {
+  margin-top: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.data {
+  padding-top: 100px;
   text-align: center;
+  color: #ffffff;
 }

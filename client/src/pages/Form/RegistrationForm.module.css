@@ -1,0 +1,16 @@
+.box {
+  position: relative;
+}
+p {
+  color: red;
+}
+
+.error {
+  position: absolute;
+  top: 150px; 
+}
+
+.err {
+  position: absolute;
+  top: 63px;
+}
