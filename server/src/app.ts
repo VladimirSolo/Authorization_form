@@ -34,7 +34,8 @@ function readDatabase(): Database {
 app.post('/check', (req: Request, res: Response) => {
   const body = req.body as DataEntry;
   const db = readDatabase();
-  const checkDb = db.data.find(item => item.email === body.email && item.number === body.number);
+  
+  const checkDb = db.data.find(item => item.email === body.email);
 
   if (checkDb) {
     res.status(200).json( checkDb );
