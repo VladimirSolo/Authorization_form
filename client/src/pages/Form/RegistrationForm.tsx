@@ -45,7 +45,7 @@ const RegistrationForm: React.ForwardRefRenderFunction<RegistrationFormRef, Regi
                   rules={{
                       required: true,
                       pattern : {
-                          value  : /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/,
+                        value: /^([a-z0-9_.-]+)@([\da-z.-]+)\.([a-z.]{2,6})$/,
                           message: 'Неккоректный формат адреса почты'
                       }
                   }}
