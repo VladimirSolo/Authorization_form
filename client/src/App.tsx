@@ -5,19 +5,23 @@ import { Data, RegistrationFormRef } from './pages/Form/types';
 import LoadingButton from '@mui/lab/LoadingButton';
 import SendIcon from '@mui/icons-material/Send';
 import { Box, Typography } from '@mui/material';
+import { useTypedDispatch, useTypedSelector } from './hook';
+import { receive } from './store/receiveThunk';
 
 function App() {
   const [loading, setLoading] = useState(false);
   const formRef = useRef<RegistrationFormRef | null>(null);
+  const dispath = useTypedDispatch()
+  const { data, error } = useTypedSelector((state) => state.receive)
 
   const handleSubmitForm = async (data: Data) => {
-    console.log(data)
     setLoading(true);
-    if(data) {
-      setTimeout(() => {
-        setLoading(false)
-      },5000)
+    try {
+      await dispath(receive(data))
+    } catch (error) {
+      setLoading(false)
     }
+    setLoading(false)
 }
 
   const handleFormClick = () => {
@@ -45,7 +49,13 @@ function App() {
                   borderRadius: '10%'
                 }}
             >
-                 <Typography className='data' variant="h4">data</Typography>
+              {error && <Typography className='data'variant="h4">Данные не найдены</Typography>}
+              {data &&
+                 <React.Fragment>
+                    <Typography className='data' variant="h4">{data.email}</Typography>
+                    <Typography className='data' variant="h4">{data.number}</Typography>
+                 </React.Fragment> 
+                }
             </Box>
     </Box>
   );
