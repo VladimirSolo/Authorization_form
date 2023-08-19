@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+      "target": "es2017",     
+      "lib": ["es6"],
+      "module": "commonjs",
+      "declaration": true,
+      "rootDir": "./src",
+      "resolveJsonModule": true,
+      "allowJs": true,
+      "outDir": "./dist",
+      "esModuleInterop": true,
+      "forceConsistentCasingInFileNames": true,
+      "strict": true,
+      "noImplicitAny": true,
+      "skipLibCheck": true,
+      "moduleResolution": "Node",
+      "typeRoots": ["env.d.ts", "./node_modules/@types"],
+      "baseUrl": "./",
+      "paths": {
+          "@resources/*": [ "./resources/*" ],
+      },
+  },
+  "exclude": [
+      "node_modules",
+      "dist"
+  ]
+}
