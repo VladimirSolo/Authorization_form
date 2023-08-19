@@ -3,6 +3,7 @@ import { useForm, Controller } from 'react-hook-form'
 import { Data, RegistrationFormProps, RegistrationFormRef } from './types';
 import { TextField, Box, Stack} from '@mui/material';
 import styles from './RegistrationForm.module.css'
+import maskPhoneNumber from '../../lib/maskPhoneNumber';
 
 const RegistrationForm: React.ForwardRefRenderFunction<RegistrationFormRef, RegistrationFormProps> = (props, ref) => {
     const { onSubmit } = props;
@@ -68,11 +69,7 @@ const RegistrationForm: React.ForwardRefRenderFunction<RegistrationFormRef, Regi
                       required: true,
                       minLength: {
                         value: 6,
-                        message: 'Введите 6 цифр'
-                      },
-                      maxLength: {
-                        value: 6,
-                        message: 'Введите 6 цифр'
+                        message: 'Введите 6 цифр через каждые 2 поставить дефис'
                       }
                   }}
                   render={({ field }) => 
@@ -82,6 +79,13 @@ const RegistrationForm: React.ForwardRefRenderFunction<RegistrationFormRef, Regi
                           label="Введите number" 
                           variant="outlined" 
                           type="text"
+                          inputProps={{
+                            maxLength: 8
+                        }}
+                          onChange={(e) => {
+                            field.onChange(e.target.value)
+                        }}
+                          value={maskPhoneNumber(field.value)}
                       />
                     }
                 />
