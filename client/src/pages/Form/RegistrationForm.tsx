@@ -66,9 +66,8 @@ const RegistrationForm: React.ForwardRefRenderFunction<RegistrationFormRef, Regi
                   name="number"
                   control={control}
                   rules={{
-                      required: true,
                       minLength: {
-                        value: 6,
+                        value: 8,
                         message: 'Введите 6 цифр через каждые 2 поставить дефис'
                       }
                   }}
