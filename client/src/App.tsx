@@ -15,9 +15,10 @@ function App() {
   const { data, error } = useTypedSelector((state) => state.receive)
 
   const handleSubmitForm = async (data: Data) => {
+    const { email, number} = data;
     setLoading(true);
     try {
-      await dispath(receive(data))
+      await dispath(receive({ email, number: number.replace(/-/g, '')} ))
     } catch (error) {
       setLoading(false)
     }
