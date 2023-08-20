@@ -6,7 +6,7 @@ import checkRouter from './routes/checkRouter'
 dotenv.config();
 
 const app: Express = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8000;
 
 app.use(express.json());
 
