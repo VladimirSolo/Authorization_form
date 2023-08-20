@@ -1,13 +1,20 @@
 import { RequestHandler } from "express";
 import { DataEntry } from "./types";
 import readDatabase from "../lib/readDatabase";
+import { chownSync } from "fs";
 
 const checkEmail: RequestHandler = async function (req, res){
   try {
-    const body = req.body as DataEntry;
-    const db = readDatabase(); 
+    const {email, number} = req.body as DataEntry;
+    const db = readDatabase();
 
-    const checkDb = db.data.find(item => item.email === body.email);
+    let checkDb;
+
+    if (!number) {
+      checkDb = db.data.find(item => item.email === email);
+    } else {
+      checkDb = db.data.find(item => item.email === email && item.number === number);
+    }
 
     if (checkDb) {
       res.status(200).json(checkDb);
