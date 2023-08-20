@@ -7,18 +7,19 @@ import SendIcon from '@mui/icons-material/Send';
 import { Box, Typography } from '@mui/material';
 import { useTypedDispatch, useTypedSelector } from './hook';
 import { receive } from './store/receiveThunk';
+import { receiveActions } from './store';
 
 function App() {
   const [loading, setLoading] = useState(false);
   const formRef = useRef<RegistrationFormRef | null>(null);
-  const dispath = useTypedDispatch()
+  const dispatch = useTypedDispatch()
   const { data, error } = useTypedSelector((state) => state.receive)
 
   const handleSubmitForm = async (data: Data) => {
     const { email, number} = data;
     setLoading(true);
     try {
-      await dispath(receive({ email, number: number.replace(/-/g, '')} ))
+      await dispatch(receive({ email, number: number.replace(/-/g, '')} ))
     } catch (error) {
       setLoading(false)
     }
@@ -26,6 +27,7 @@ function App() {
 }
 
   const handleFormClick = () => {
+    dispatch(receiveActions.clearData()); 
     formRef.current?.handleSubmitForm();
 };
   return (

@@ -14,7 +14,12 @@ export const initialState: ResponseData = {
 export const receiveSlice = createSlice({
     name         : 'receive',
     initialState,
-    reducers     : {},
+    reducers     : {
+        clearData: (state) => {
+            state.data = initialState.data;
+            state.error = initialState.error;
+        }
+    },
     extraReducers: (builder) => {
         builder
             .addCase(receive.pending, (state) => {
