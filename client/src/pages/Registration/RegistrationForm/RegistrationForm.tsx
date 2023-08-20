@@ -3,7 +3,7 @@ import { useForm, Controller } from 'react-hook-form'
 import { Data, RegistrationFormProps, RegistrationFormRef } from './types';
 import { TextField, Box, Stack} from '@mui/material';
 import styles from './RegistrationForm.module.css'
-import maskPhoneNumber from '../../lib/maskPhoneNumber';
+import maskPhoneNumber from '../../../lib/maskPhoneNumber';
 
 const RegistrationForm: React.ForwardRefRenderFunction<RegistrationFormRef, RegistrationFormProps> = (props, ref) => {
     const { onSubmit } = props;
