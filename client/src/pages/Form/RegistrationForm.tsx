@@ -11,6 +11,7 @@ const RegistrationForm: React.ForwardRefRenderFunction<RegistrationFormRef, Regi
     const {
         handleSubmit,
         control,
+        reset,
         formState: { errors }
     } = useForm<Data>({
         defaultValues: {
@@ -21,7 +22,10 @@ const RegistrationForm: React.ForwardRefRenderFunction<RegistrationFormRef, Regi
 
     useImperativeHandle(ref, () => ({
         handleSubmitForm: () => {
-            handleSubmit(onSubmit)();
+            handleSubmit((data) => {
+                onSubmit(data);
+                reset(); 
+            })();
         }
     }));
 
