@@ -1,7 +1,7 @@
 import { RequestHandler } from "express";
 import { DataEntry } from "./types";
 import readDatabase from "../lib/readDatabase";
-// TODO not working
+
 const checkEmail: RequestHandler = async function (req, res){
   try {
     const body = req.body as DataEntry;

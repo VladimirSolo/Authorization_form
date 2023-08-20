@@ -4,7 +4,7 @@ import validation from '../middleware/validation';
 
 const router = Router();
 
-router.post('./', validation([
+router.post('/', validation([
   { 
       name     : 'email',
       type     : 'string',
@@ -15,7 +15,7 @@ router.post('./', validation([
   { 
       name    : 'number',
       type    : 'string',
-      required: true,
+      required: false,
       payload : 'body'
   }
 ]), checkEmail)
